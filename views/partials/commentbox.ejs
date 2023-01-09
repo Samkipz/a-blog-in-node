@@ -1,0 +1,32 @@
+<article>
+    <h2>Comments</h2>
+
+    <% if (blog.comments.length> 0) { %>
+        <% blog.comments.forEach(comment=> { %>
+            <a class="single" href="/blogs/<%= blog._id %>">
+                <h3 class="title">
+                    <%= comment.name %>
+                </h3>
+                <p class="snippet">
+                    <%= comment.text %>
+                </p>
+            </a>
+            <% }) %>
+                <% } else { %>
+                    <p class="no-content">There are no comments to display...</p>
+                    <% } %>
+
+                        <div class="create-comment content">
+                            <form action="/blogs/<%= blog.id %>/comment" method="POST">
+                                <div>
+                                    <label for="title">Name:</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                                <div>
+                                    <textarea name="text" id="text" placeholder="Hey... say something!"></textarea>
+                                </div>
+                                <button class="mybtn">Submit</button>
+                            </form>
+
+                        </div>
+</article>
